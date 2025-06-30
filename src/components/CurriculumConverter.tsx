@@ -522,36 +522,36 @@ export default function CurriculumConverter() {
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold">🗄</span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
               Curriculum JSON to SQL Converter
             </h1>
           </div>
-          <p className="text-gray-600 max-w-2xl">
+          <p className="text-gray-600 max-w-2xl text-sm md:text-base">
             Convert curriculum JSON files into SQL INSERT statements for Supabase database integration.
           </p>
 
           <div className="flex gap-2 mt-4 flex-wrap">
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               📁 Upload JSON
             </button>
             <button
               onClick={loadSample}
-              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               📄 Load Sample
             </button>
             <button
               onClick={clearAll}
-              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               🗑 Clear All
             </button>
             <button
               onClick={() => setShowHelp(!showHelp)}
-              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               ❓ Help
             </button>
@@ -563,7 +563,7 @@ export default function CurriculumConverter() {
       {showHelp && (
         <div className="bg-yellow-50 border-b">
           <div className="max-w-7xl mx-auto px-4 py-4">
-            <div className="grid md:grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
                 <h3 className="font-semibold mb-2 text-red-700">🚨 Common Issues:</h3>
                 <ul className="space-y-1 text-gray-600">
@@ -589,10 +589,10 @@ export default function CurriculumConverter() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="grid lg:grid-cols-2 gap-6 h-[calc(100vh-300px)] min-h-[600px]">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 min-h-[700px]">
           {/* JSON Input Panel */}
-          <div className="bg-white rounded-lg border shadow-sm">
-            <div className="p-4 border-b">
+          <div className="bg-white rounded-lg border shadow-sm flex flex-col">
+            <div className="p-4 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                 📝 JSON Input
               </h2>
@@ -600,7 +600,7 @@ export default function CurriculumConverter() {
                 Paste your curriculum JSON data here. Validation happens automatically with 500ms delay.
               </p>
             </div>
-            <div className="p-4 h-[calc(100%-100px)] flex flex-col gap-3">
+            <div className="p-4 flex-1 flex flex-col gap-3 min-h-[500px]">
               {jsonError && (
                 <div className="bg-red-50 border border-red-200 rounded-md p-3">
                   <div className="flex">
@@ -644,20 +644,20 @@ export default function CurriculumConverter() {
                 </div>
               )}
 
-              <div className="flex-1">
+              <div className="flex-1 min-h-[400px]">
                 <textarea
                   placeholder="Paste your curriculum JSON here..."
                   value={jsonInput}
                   onChange={(e) => handleJsonChange(e.target.value)}
-                  className="w-full h-full font-mono text-sm border border-gray-300 rounded-md p-3 resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full h-full min-h-[400px] font-mono text-sm border border-gray-300 rounded-md p-3 resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
             </div>
           </div>
 
           {/* SQL Output Panel */}
-          <div className="bg-white rounded-lg border shadow-sm">
-            <div className="p-4 border-b">
+          <div className="bg-white rounded-lg border shadow-sm flex flex-col">
+            <div className="p-4 border-b flex-shrink-0">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
@@ -672,16 +672,16 @@ export default function CurriculumConverter() {
                   <button
                     onClick={() => copyToClipboard(sqlOutput)}
                     disabled={!sqlOutput}
-                    className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50"
+                    className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     {copySuccess ? "✅ Copied!" : "📋 Copy SQL"}
                   </button>
                 )}
               </div>
             </div>
-            <div className="p-4 h-[calc(100%-100px)]">
+            <div className="p-4 flex-1 min-h-[500px] flex flex-col">
               {showProcessing ? (
-                <div className="flex items-center justify-center h-full text-gray-500">
+                <div className="flex items-center justify-center flex-1 text-gray-500">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
                   <span className="ml-2">Processing...</span>
                 </div>
@@ -689,11 +689,11 @@ export default function CurriculumConverter() {
                 <textarea
                   value={sqlOutput}
                   readOnly
-                  className="w-full h-full font-mono text-sm border border-gray-300 rounded-md p-3 resize-none bg-gray-50"
+                  className="w-full flex-1 min-h-[400px] font-mono text-sm border border-gray-300 rounded-md p-3 resize-none bg-gray-50"
                   placeholder="SQL statements will appear here..."
                 />
               ) : (
-                <div className="flex items-center justify-center h-full text-gray-500">
+                <div className="flex items-center justify-center flex-1 text-gray-500">
                   <div className="text-center">
                     <div className="text-4xl mb-4">🗄️</div>
                     <p className="text-lg mb-2">
